@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Node2D.gd" type="Script" id=1]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.01
+autostart = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="TotalPoints" type="Label" parent="VBoxContainer"]
+margin_right = 301.0
+margin_bottom = 14.0
+text = "Total points: 0"
+
+[node name="PointsInCircle" type="Label" parent="VBoxContainer"]
+margin_top = 18.0
+margin_right = 301.0
+margin_bottom = 32.0
+text = "Points in circle: 0"
+
+[node name="PiApproximation" type="Label" parent="VBoxContainer"]
+margin_top = 36.0
+margin_right = 301.0
+margin_bottom = 50.0
+text = "Pi approximation: 4 * 10000/10000 = 3.141592"
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+margin_top = 54.0
+margin_right = 301.0
+margin_bottom = 74.0
+toggle_mode = true
+text = "Stop"
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="toggled" from="VBoxContainer/Button" to="." method="_on_Button_toggled"]
